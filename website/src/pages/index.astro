@@ -1,0 +1,82 @@
+---
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>TheCodeHeist's QuickScripts</title>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				max-width: 800px;
+				margin: 0 auto;
+				padding: 20px;
+				background-color: #f4f4f4;
+			}
+			header {
+				text-align: center;
+				background-color: #333;
+				color: white;
+				padding: 20px;
+				border-radius: 8px;
+			}
+			.script-list {
+				list-style: none;
+				padding: 0;
+			}
+			.script-item {
+				background-color: white;
+				margin: 10px 0;
+				padding: 15px;
+				border-radius: 8px;
+				box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+			}
+			.script-item h3 {
+				margin-top: 0;
+			}
+			.download-btn {
+				display: inline-block;
+				background-color: #007bff;
+				color: white;
+				padding: 8px 16px;
+				text-decoration: none;
+				border-radius: 4px;
+			}
+			.download-btn:hover {
+				background-color: #0056b3;
+			}
+		</style>
+	</head>
+	<body>
+		<header>
+			<h1>TheCodeHeist's QuickScripts</h1>
+			<p>Random custom scripts for delicate usage</p>
+			<p>When you need it, just use it bro...</p>
+			<blockquote>No warranty, but do let me know if there's a prob with it! I welcome educated contributions (i.e. avoid AI slops plz)...</blockquote>
+		</header>
+
+		<main>
+			<h2>Available Scripts</h2>
+			<ul class="script-list">
+				<li class="script-item">
+					<h3>NetBox Setup Script</h3>
+					<p>Install NetBox on Debian/Ubuntu (tested on Ubuntu 24.04). Minimal, idempotent-ish installer with configurable options.</p>
+					<p><strong>Usage:</strong> sudo ./netbox_setup.sh</p>
+					<p><strong>Curl command:</strong> <code>curl https://your-domain.com/netbox-setup | bash</code></p>
+					<a href="/netbox-setup" class="download-btn" download>Download netbox_setup.sh</a>
+				</li>
+				<li class="script-item">
+					<h3>Just Swap It - Universal Swap Setup</h3>
+					<p>Universal Swap Manager for Low-RAM / Potato Machines. Sets up zram and swapfile for better memory management.</p>
+					<p><strong>Usage:</strong> Run the script and follow the menu.</p>
+					<p><strong>Curl command:</strong> <code>curl https://your-domain.com/just-swap-it | bash</code></p>
+					<a href="/just-swap-it" class="download-btn" download>Download justswapit.sh</a>
+				</li>
+			</ul>
+		</main>
+	</body>
+</html>

@@ -1,23 +1,14 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "index.html",
-      "use": "@vercel/static"
-    }
-  ],
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
   "routes": [
     {
-      "src": "/netbox",
+      "src": "/netbox-setup",
       "dest": "/scripts/netbox_setup.sh"
     },
     {
-      "src": "/justswapit",
+      "src": "/just-swap-it",
       "dest": "/scripts/justswapit.sh"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/index.html"
     }
   ]
 }
