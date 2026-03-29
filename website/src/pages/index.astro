@@ -46,8 +46,24 @@
 				text-decoration: none;
 				border-radius: 4px;
 			}
-			.download-btn:hover {
-				background-color: #0056b3;
+			.script-item p code {
+				background-color: #f8f8f8;
+				padding: 2px 4px;
+				border-radius: 3px;
+				font-family: monospace;
+			}
+			.copy-btn {
+				margin-left: 10px;
+				padding: 4px 8px;
+				font-size: 12px;
+				background-color: #28a745;
+				color: white;
+				border: none;
+				border-radius: 3px;
+				cursor: pointer;
+			}
+			.copy-btn:hover {
+				background-color: #218838;
 			}
 		</style>
 	</head>
@@ -66,17 +82,56 @@
 					<h3>NetBox Setup Script</h3>
 					<p>Install NetBox on Debian/Ubuntu (tested on Ubuntu 24.04). Minimal, idempotent-ish installer with configurable options.</p>
 					<p><strong>Usage:</strong> sudo ./netbox_setup.sh</p>
-					<p><strong>Curl command:</strong> <code>sh -c "$(curl -sS https://quickscripts.vercel.app/netbox)"</code></p>
-					<a href="/netbox-setup" class="download-btn" download>Download netbox_setup.sh</a>
+					<p><strong>Curl command:</strong> <code>bash -c "$(curl -sS https://quickscripts.vercel.app/netbox)"</code><button class="copy-btn" onclick="copyToClipboard(this.previousElementSibling)">Copy</button></p>
+					<a href="/netbox" class="download-btn" download>Download netbox_setup.sh</a>
 				</li>
 				<li class="script-item">
 					<h3>Just Swap It - Universal Swap Setup</h3>
 					<p>Universal Swap Manager for Low-RAM / Potato Machines. Sets up zram and swapfile for better memory management.</p>
 					<p><strong>Usage:</strong> Run the script and follow the menu.</p>
-					<p><strong>Curl command:</strong> <code>sh -c "$(curl -sS https://quickscripts.vercel.app/justswapit)"</code></p>
+					<p><strong>Curl command:</strong> <code>bash -c "$(curl -sS https://quickscripts.vercel.app/justswapit)"</code><button class="copy-btn" onclick="copyToClipboard(this.previousElementSibling)">Copy</button></p>
 					<a href="/justswapit" class="download-btn" download>Download justswapit.sh</a>
 				</li>
 			</ul>
 		</main>
+		<script is:inline>
+			function copyToClipboard(element) {
+				const text = element.textContent;
+				const btn = element.nextElementSibling;
+				const originalText = btn.textContent;
+
+				if (navigator.clipboard && navigator.clipboard.writeText) {
+					navigator.clipboard.writeText(text).then(() => {
+						btn.textContent = 'Copied!';
+						setTimeout(() => btn.textContent = originalText, 2000);
+					}).catch(err => {
+						console.error('Failed to copy: ', err);
+						fallbackCopyTextToClipboard(text, btn, originalText);
+					});
+				} else {
+					fallbackCopyTextToClipboard(text, btn, originalText);
+				}
+			}
+
+			function fallbackCopyTextToClipboard(text, btn, originalText) {
+				const textArea = document.createElement('textarea');
+				textArea.value = text;
+				textArea.style.position = 'fixed';
+				textArea.style.left = '-999999px';
+				textArea.style.top = '-999999px';
+				document.body.appendChild(textArea);
+				textArea.focus();
+				textArea.select();
+				try {
+					document.execCommand('copy');
+					btn.textContent = 'Copied!';
+					setTimeout(() => btn.textContent = originalText, 2000);
+				} catch (err) {
+					console.error('Fallback failed: ', err);
+					alert('Copy failed. Please copy manually: ' + text);
+				}
+				document.body.removeChild(textArea);
+			}
+		</script>
 	</body>
 </html>
