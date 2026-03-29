@@ -1,14 +1,4 @@
 {
   "buildCommand": "npm run build",
-  "outputDirectory": "dist",
-  "routes": [
-    {
-      "src": "/netbox-setup",
-      "dest": "/scripts/netbox_setup.sh"
-    },
-    {
-      "src": "/just-swap-it",
-      "dest": "/scripts/justswapit.sh"
-    }
-  ]
+  "outputDirectory": "dist"
 }
