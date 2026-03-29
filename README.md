@@ -1,2 +1,2 @@
-# random-installation-scripts
-Random scripts for personal usage
+# quickscripts
+Random custom scripts for delicate usage
